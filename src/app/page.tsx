@@ -16,17 +16,17 @@ export default function Home() {
         <div className="row-span-2">
           <Framework />
         </div>
-        <div className="col-span-2">
+        <div className="col-span-1">
           <VoiceTone />
         </div>
         <Logo />
         <Typography />
         <Iconography />
-        <div className="row-span-2">
+        <div className="row-span-1">
           <Color />
         </div>
         <DropboxIcon />
-        <div className="row-span-2 col-span-2">
+        <div className="row-span-2">
           <Imagery />
         </div>
         <Motion />
