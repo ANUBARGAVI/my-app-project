@@ -26,10 +26,13 @@ export default function Home() {
           <Color />
         </div>
         <DropboxIcon />
+       
         <div className="row-span-2">
           <Imagery />
         </div>
-        <Motion />
+      <div>
+         <Motion />
+      </div>
       </div>
     </main>
   );
