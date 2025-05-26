@@ -1,13 +1,14 @@
 'use client';
+
 import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const VoiceTone = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const quoteContainerRef = useRef<HTMLDivElement>(null);
-  const leftQuoteRef = useRef<HTMLSpanElement>(null);
-  const rightQuoteRef = useRef<HTMLSpanElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef(null);
+  const quoteContainerRef = useRef(null);
+  const leftQuoteRef = useRef(null);
+  const rightQuoteRef = useRef(null);
+  const titleRef = useRef(null);
 
   useLayoutEffect(() => {
     // Initial styles
@@ -75,7 +76,7 @@ const VoiceTone = () => {
   return (
     <div
       ref={containerRef}
-      className="text-white p-6 rounded-lg  w-full max-w-7xl mx-auto h-full"
+      className="text-white p-6 rounded-lg w-full max-w-7xl mx-auto h-full overflow-hidden"
     >
       <h2
         ref={titleRef}
@@ -86,15 +87,15 @@ const VoiceTone = () => {
 
       <div
         ref={quoteContainerRef}
-        className="flex justify-between  items-center space-x-10 px-2 cursor-pointer select-none"
+        className="flex justify-between items-center space-x-10 px-2 cursor-pointer select-none overflow-hidden"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <span
           ref={leftQuoteRef}
-          className="leading-none font-serif"
+          className="leading-none font-serif flex-shrink-0"
           style={{
-            fontSize: '23vw',
+            fontSize: 'clamp(4rem, 20vw, 10rem)',
             fontWeight: 700,
             lineHeight: '0.5',
           }}
@@ -103,9 +104,9 @@ const VoiceTone = () => {
         </span>
         <span
           ref={rightQuoteRef}
-          className="leading-none font-serif relative"
+          className="leading-none font-serif relative flex-shrink-0"
           style={{
-            fontSize: '23vw',
+            fontSize: 'clamp(4rem, 20vw, 10rem)',
             fontWeight: 900,
             lineHeight: '1',
             top: '20px',
