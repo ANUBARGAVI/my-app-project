@@ -87,7 +87,7 @@ const Imagery: React.FC<ImageryProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative rounded-lg p-6 overflow-hidden "
+      className="relative rounded-lg p-6 "
       style={{
         backgroundColor: IDENTITY_ON_PINK,
         color: IDENTITY_PINK,
