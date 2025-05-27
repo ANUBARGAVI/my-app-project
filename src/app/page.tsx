@@ -1,4 +1,3 @@
-// File: /src/app/page.tsx
 import Framework from './components/Framework';
 import VoiceTone from './components/VoiceTone';
 import Logo from './components/Logo';
@@ -11,28 +10,40 @@ import Motion from './components/Motion';
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-4 bg-white">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
-        <div className="row-span-2">
+    <main className="min-h-screen bg-white p-4">
+      <div className="flex flex-wrap justify-start gap-4">
+
+        {/* First row components: 1–4 */}
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
           <Framework />
         </div>
-        <div className="col-span-1">
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
           <VoiceTone />
         </div>
-        <Logo />
-        <Typography />
-        <Iconography />
-        <div className="row-span-1">
-          <Color />
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
+          <Logo />
         </div>
-        <DropboxIcon />
-       
-        <div className="row-span-2">
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
+          <Typography />
+        </div>
+
+        {/* Second row components: 5–8 */}
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
+          <Iconography />
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[23%] relative">
+          <Color />
+          <div className="absolute bottom-2 right-2">
+            <DropboxIcon />
+          </div>
+        </div>
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
           <Imagery />
         </div>
-      <div>
-         <Motion />
-      </div>
+        <div className="w-full sm:w-[48%] lg:w-[23%]">
+          <Motion />
+        </div>
+
       </div>
     </main>
   );

@@ -2,7 +2,17 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-const Motion = () => {
+type MotionProps = {
+  width?: number | string;
+  height?: number | string;
+  svgSize?: number | string;
+};
+
+const Motion: React.FC<MotionProps> = ({
+  width = '23vw',
+  height = '65vh',
+  svgSize = 180,
+}) => {
   const leftBottom = useRef<SVGCircleElement>(null);
   const rightBottom = useRef<SVGCircleElement>(null);
   const leftTop = useRef<SVGCircleElement>(null);
@@ -74,27 +84,49 @@ const Motion = () => {
 
   return (
     <div
-      ref={container}
-      className="w-[260px] h-[300px] rounded-md p-4 bg-purple-300 text-purple-800 flex flex-col items-center justify-start cursor-pointer transition-colors duration-300"
-    >
-      <h2 ref={title} className="text-2xl font-bold mb-4">Motion</h2>
+  ref={container}
+  className="rounded-md p-4 bg-[#c8aff0] text-[#682760]
+             flex flex-col items-start justify-start
+             cursor-pointer transition-colors duration-300"
+  style={{
+    width: typeof width === 'number' ? `${width}px` : width,
+    height: typeof height === 'number' ? `${height}px` : height,
+    marginLeft: '4.5vw',
+    marginTop: '-20vh',
+  }}
+>
+  <h2
+    ref={title}
+    className="text-2xl font-bold m-0 p-0"
+    style={{ alignSelf: "flex-start" }}
+  >
+    Motion
+  </h2>
 
-      <svg viewBox="0 0 120 120" className="w-[180px] h-[180px]">
+
+      <svg
+        viewBox="0 0 120 120"
+        className="block"
+        style={{
+          width: typeof svgSize === 'number' ? `${svgSize}px` : svgSize,
+          height: typeof svgSize === 'number' ? `${svgSize}px` : svgSize,
+        }}
+      >
         {/* Rod lines adjusted for circle edges */}
-        <line ref={lineBottom} x1="20" y1="90" x2="30" y2="90" stroke="#6B21A8" strokeWidth="2" />
-        <line ref={lineTop} x1="90" y1="30" x2="100" y2="30" stroke="#6B21A8" strokeWidth="2" />
+        <line ref={lineBottom} x1="20" y1="90" x2="30" y2="90" stroke="#682760" strokeWidth="2" />
+        <line ref={lineTop} x1="90" y1="30" x2="100" y2="30" stroke="#682760" strokeWidth="2" />
 
         {/* Circles (animated) */}
-        <circle ref={leftBottom} cx="15" cy="90" r="5" fill="#6B21A8" />
-        <circle ref={rightBottom} cx="35" cy="90" r="5" fill="#6B21A8" />
-        <circle ref={leftTop} cx="85" cy="30" r="5" fill="#6B21A8" />
-        <circle ref={rightTop} cx="105" cy="30" r="5" fill="#6B21A8" />
+        <circle ref={leftBottom} cx="15" cy="90" r="5" fill="#682760" />
+        <circle ref={rightBottom} cx="35" cy="90" r="5" fill="#682760" />
+        <circle ref={leftTop} cx="85" cy="30" r="5" fill="#682760" />
+        <circle ref={rightTop} cx="105" cy="30" r="5" fill="#682760" />
 
         {/* Curve adjusted for circle edges */}
         <path
           ref={curve}
           d="M20 90 C 45 60, 75 60, 100 30"
-          stroke="#6B21A8"
+          stroke="#682760"
           strokeWidth="2"
           fill="none"
         />

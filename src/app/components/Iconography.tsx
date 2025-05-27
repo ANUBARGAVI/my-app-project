@@ -1,3 +1,7 @@
+
+
+
+
 "use client";
 import React, { useRef, useState } from "react";
 import { gsap } from "gsap";
@@ -11,9 +15,9 @@ type IconographyProps = {
 };
 
 const Iconography: React.FC<IconographyProps> = ({
-  width = "100%",
-  height = "100vh",
-  iconSize = 200, // default icon is now 600px
+  width = "23vw",
+  height = "45vh",
+  iconSize = '20vw', // default icon is now 600px
 }) => {
   const [hovered, setHovered] = useState(false);
   const shackleRef = useRef<SVGPathElement>(null);
@@ -55,7 +59,7 @@ const Iconography: React.FC<IconographyProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <h2 className="text-2xl font-bold mb-4 transition-colors duration-500">
+      <h2 className="text-4xl font-bold mb-4 transition-colors duration-500">
         Iconography
       </h2>
 
