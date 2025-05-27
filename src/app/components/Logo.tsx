@@ -1,50 +1,71 @@
 'use client';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import gsap from 'gsap';
 
 const Logo = () => {
-  const logoRef = useRef(null);
-
-  useEffect(() => {
-    if (logoRef.current) {
-      gsap.set(logoRef.current, {
-        opacity: 0,
-        rotateX: -90,
-        transformOrigin: 'center bottom',
-      });
-    }
-  }, []);
+  const logoRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLHeadingElement>(null);
+  const svgPathRef = useRef<SVGPathElement>(null);
 
   const handleMouseEnter = () => {
-    if (logoRef.current) {
-      gsap.to(logoRef.current, {
-        opacity: 1,
-        rotateX: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-      });
-    }
+    gsap.to(containerRef.current, {
+      backgroundColor: '#000',
+      duration: 0.5,
+    });
+
+    gsap.to(textRef.current, {
+      color: '#fff',
+      duration: 0.5,
+    });
+
+    gsap.to(svgPathRef.current, {
+      fill: '#000',
+      stroke: '#fff',
+      strokeWidth: 2,
+      duration: 0.5,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    gsap.to(containerRef.current, {
+      backgroundColor: 'rgb(6, 182, 212)', // cyan-400
+      duration: 0.5,
+    });
+
+    gsap.to(textRef.current, {
+      color: 'rgb(14, 116, 144)', // sky-900
+      duration: 0.5,
+    });
+
+    gsap.to(svgPathRef.current, {
+      fill: 'currentColor',
+      stroke: 'none',
+      duration: 0.5,
+    });
   };
 
   return (
     <div
+      ref={containerRef}
       onMouseEnter={handleMouseEnter}
-      className="relative bg-cyan-400 text-sky-900 p-4 h-48 w-48 rounded-lg cursor-pointer [perspective:800px]"
+      onMouseLeave={handleMouseLeave}
+      className="relative bg-cyan-400 text-sky-900 p-4 h-48 w-48 rounded-lg cursor-pointer"
     >
-      {/* Top-left logo text */}
-      <h2 className="absolute top-2 left-2 text-lg font-bold">Logo</h2>
+      <h2 ref={textRef} className="absolute top-2 left-2 text-lg font-bold">Logo</h2>
 
-      {/* Bottom-right animated SVG */}
-      <img
+      <svg
         ref={logoRef}
-        src="dropbox.svg"
-        alt="Dropbox Logo"
-        className="absolute bottom-2 right-2 w-8 h-8"
-        style={{
-          opacity: 0,
-          transformStyle: 'preserve-3d',
-        }}
-      />
+        viewBox="0 0 128 128"
+        className="absolute bottom-2 right-2 w-10 h-10"
+      >
+        <path
+          ref={svgPathRef}
+          d="M32 10L64 30L32 50L0 30L32 10ZM96 10L128 30L96 50L64 30L96 10ZM0 66L32 86L64 66L32 46L0 66ZM96 86L128 66L96 46L64 66L96 86ZM32 90L64 110L96 90L64 70L32 90Z"
+          fill="currentColor"
+          stroke="none"
+        />
+      </svg>
     </div>
   );
 };
